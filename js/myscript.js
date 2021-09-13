@@ -115,6 +115,8 @@ const colors = [
     "red"
 ]
 
+console.log(colorizeItems(icons, colors))
+
 function printToPage(array, container){
     let htmlContent = "";
 
@@ -152,7 +154,11 @@ function colorizeItems(array, colors){
     const types = getUniquePropertyValues(array, "type");
     console.log(types);
 
-    const colorizedArray = array.map((element) => {
+    if(types.length > colors.length){
+        return null;
+    }
+
+    const colorizedArray = icons.map((icon) => {
         
         const indexOfType = types.indexOf(element.type);
         if ( indexOfType !== -1 ) {
@@ -160,4 +166,6 @@ function colorizeItems(array, colors){
             element.color = colors[indexOfType];
         } 
     })
+
+    return colorizeItems;
 }
